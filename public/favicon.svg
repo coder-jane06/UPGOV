@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#F1F5FB"/>
+  <circle cx="32" cy="32" r="21" stroke="#1B3A6B" stroke-width="3"/>
+  <circle cx="32" cy="32" r="16" stroke="#1B3A6B" stroke-opacity=".45" stroke-width="2"/>
+  <circle cx="32" cy="32" r="4" fill="#E8872A"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.8" d="M32 11v10.5"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.8" d="M32 42.5V53"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.8" d="M11 32h10.5"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.8" d="M42.5 32H53"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.5" d="m17.15 17.15 7.42 7.42"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.5" d="m39.43 39.43 7.42 7.42"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.5" d="m46.85 17.15-7.42 7.42"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".85" stroke-width="1.5" d="m24.57 39.43-7.42 7.42"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m24.13 13.57 3.62 8.85"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m36.25 41.58 3.62 8.85"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m50.43 24.13-8.85 3.62"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m22.42 36.25-8.85 3.62"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m39.88 13.5-3.75 8.8"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m27.87 41.7-3.75 8.8"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m50.5 39.88-8.8-3.75"/>
+  <path stroke="#1B3A6B" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.4" d="m22.3 27.87-8.8-3.75"/>
+</svg>
