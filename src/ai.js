@@ -28,6 +28,7 @@ export async function callGemini(system, user, history = [], tools = []) {
     generationConfig: {
       temperature: 0.2,
       maxOutputTokens: 2048,
+      response_mime_type: 'application/json',
     },
   };
 
@@ -382,12 +383,54 @@ Description: ${formData.description}`;
     // Extract final summary text
     const finalText = extractText(response);
 
+    // --- PHASE 2: Predictive Risk Analysis ---
+    trace.push({
+      tool: 'predictive_risk_analysis',
+      input: { sector: formData.location || formData.sector || 'Unknown' },
+      status: 'running',
+      timestamp: new Date().toISOString()
+    });
+    onTraceUpdate?.([...trace]);
+    
+    // Dynamically import to avoid circular dependency
+    const { runPredictiveAnalysis } = await import('./predictiveAgent.js');
+    const riskResult = await runPredictiveAnalysis(existingTickets, formData.location || formData.sector || 'Unknown');
+    
+    trace[trace.length - 1].status = 'done';
+    trace[trace.length - 1].output = riskResult;
+    toolResults['predictive_risk'] = riskResult;
+    onTraceUpdate?.([...trace]);
+
+    // --- PHASE 3: SLA Pre-emptive Escalation ---
+    trace.push({
+      tool: 'sla_escalation_monitor',
+      input: { ticket_data: toolResults },
+      status: 'running',
+      timestamp: new Date().toISOString()
+    });
+    onTraceUpdate?.([...trace]);
+
+    let isEscalated = false;
+    let escalationReason = null;
+    
+    if (riskResult.riskLevel === 'Critical' || riskResult.riskLevel === 'High') {
+      isEscalated = true;
+      escalationReason = `Pre-emptively escalated due to ${riskResult.riskLevel} environmental risk: ${riskResult.prediction}`;
+    }
+
+    trace[trace.length - 1].status = 'done';
+    trace[trace.length - 1].output = { escalated: isEscalated, reason: escalationReason || 'Standard SLA applies' };
+    toolResults['sla_escalation'] = { escalated: isEscalated, reason: escalationReason };
+    onTraceUpdate?.([...trace]);
+
     return {
       toolResults,
       finalText,
       isDuplicate: false,
       matchedId: null,
       trace: [...trace],
+      isEscalated,
+      escalationReason
     };
   } catch (error) {
     // Graceful degradation for 429 Rate Limit (Free Tier)
