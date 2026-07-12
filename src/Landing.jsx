@@ -56,31 +56,31 @@ function WhatsAppGlyph({ className = '' }) {
 const TRUST_LOGOS = [
   {
     nameKey: 'landing.trust.upgov.name',
-    src: '/official-logos/upgov.png',
+    src: '/UPGOV/official-logos/upgov.png',
     altKey: 'landing.trust.upgov.alt',
     hintKey: 'landing.trust.upgov.hint'
   },
   {
     nameKey: 'landing.trust.pwd.name',
-    src: '/official-logos/upgov.png',
+    src: '/UPGOV/official-logos/upgov.png',
     altKey: 'landing.trust.pwd.alt',
     hintKey: 'landing.trust.pwd.hint'
   },
   {
     nameKey: 'landing.trust.igrs.name',
-    src: '/official-logos/igrs.png',
+    src: '/UPGOV/official-logos/igrs.png',
     altKey: 'landing.trust.igrs.alt',
     hintKey: 'landing.trust.igrs.hint'
   },
   {
     nameKey: 'landing.trust.cpgrams.name',
-    src: '/official-logos/cpgrams.png',
+    src: '/UPGOV/official-logos/cpgrams.png',
     altKey: 'landing.trust.cpgrams.alt',
     hintKey: 'landing.trust.cpgrams.hint'
   },
   {
     nameKey: 'landing.trust.nic.name',
-    src: '/official-logos/nic.jpg',
+    src: '/UPGOV/official-logos/nic.jpg',
     altKey: 'landing.trust.nic.alt',
     hintKey: 'landing.trust.nic.hint'
   },
@@ -389,7 +389,7 @@ export function LandingPage({ onSelectRole, onPublicDash }) {
             muted 
             playsInline 
             className="h-full w-full object-cover"
-            src="/hero-bg.mp4" 
+            src="/UPGOV/hero-bg.mp4" 
           />
         </div>
 

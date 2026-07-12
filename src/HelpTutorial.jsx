@@ -78,7 +78,7 @@ export default function HelpTutorial() {
                       className="w-full aspect-video outline-none"
                       preload="metadata"
                     >
-                      <source src={videoLang === 'hi' ? "/tutorial-hi.mp4" : "/tutorial.mp4"} type="video/mp4" />
+                      <source src={videoLang === 'hi' ? "/UPGOV/tutorial-hi.mp4" : "/UPGOV/tutorial.mp4"} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                  </div>

@@ -32,6 +32,10 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          VITE_GEMINI_API_KEY: "***REMOVED***"
+          VITE_SUPABASE_URL: "https://ivymmfwwmoihldfvslpo.supabase.co"
+          VITE_SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2eW1tZnd3bW9paGxkZnZzbHBvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NDYzMzksImV4cCI6MjA5ODEyMjMzOX0.tU2uarxD0ErDwtnxvLFlqKTe99Efs_8s-ggn11yAugY"
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
