@@ -391,10 +391,8 @@ Description: ${formData.description}`;
       trace: [...trace],
     };
   } catch (error) {
-    console.error('Agent loop error:', error);
-
     // Graceful degradation for 429 Rate Limit (Free Tier)
-    if (error.message.includes('429')) {
+    if (error.message && error.message.includes('429')) {
       console.warn('API Rate Limit Exceeded. Using graceful fallback for demo.');
       return {
         toolResults: {
