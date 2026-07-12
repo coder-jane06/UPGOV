@@ -2,13 +2,12 @@
 // ai.js — Real Gemini-powered AI with multi-tool agent loop
 // ============================================================
 
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
 const GEMINI_MODEL = 'gemini-2.0-flash';
-const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+const PROXY_ENDPOINT = '/api/gemini';
 
 // ─── Core Gemini API Call ────────────────────────────────────
 /**
- * Calls Gemini API. Drop-in replacement for the old mock callClaude.
+ * Calls Gemini API securely via our backend proxy.
  * Supports function calling (tools) for agentic behavior.
  *
  * @param {string} system  — System instruction
@@ -36,10 +35,10 @@ export async function callGemini(system, user, history = [], tools = []) {
     body.tools = [{ functionDeclarations: tools }];
   }
 
-  const response = await fetch(GEMINI_ENDPOINT, {
+  const response = await fetch(PROXY_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    body: JSON.stringify({ model: GEMINI_MODEL, body }),
   });
 
   if (!response.ok) {

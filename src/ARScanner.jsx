@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 // Use environment variable for Gemini Key
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
+// Secure API route is used instead
 
 function getFallbackScanResult() {
   return {
@@ -86,11 +86,6 @@ export default function ARScanner({ onClose, onScanComplete }) {
     };
     
     try {
-      if (!GEMINI_API_KEY) {
-        applyFallbackResult();
-        return;
-      }
-
       const promptText = `You are an AI infrastructure analyst. Analyze the provided image of city damage or public issue.
 Identify the issue and classify it precisely into one of these strict Categories:
 "Roads & Potholes", "Water Supply", "Electricity", "Sanitation", "Public Lighting", "Encroachment", "Environmental/Green", "Noise Pollution", "Other".
@@ -108,18 +103,21 @@ Output ONLY a valid JSON object with the following schema, no markdown, no other
   "description": "A precise 1-2 sentence description of what is damaged and any visible hazards."
 }`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+      const response = await fetch(`/api/gemini`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                { text: promptText },
-                { inline_data: { mime_type: "image/jpeg", data: base64Image } }
-              ]
-            }
-          ]
+          model: 'gemini-2.5-flash',
+          body: {
+            contents: [
+              {
+                parts: [
+                  { text: promptText },
+                  { inline_data: { mime_type: "image/jpeg", data: base64Image } }
+                ]
+              }
+            ]
+          }
         })
       });
 
